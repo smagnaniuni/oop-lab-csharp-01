@@ -36,14 +36,14 @@ namespace ComplexAlgebra
         /// </summary>
         /// <param name="i"> The other Complex number to sum </param>
         /// <returns></returns>
-        public Complex Plus(Complex i) => new Complex(Real + i.Real, Imaginary + i.Imaginary);
+        public Complex Plus(Complex i) => this + i;
 
         /// <summary>
         /// Returns the subtraction
         /// </summary>
         /// <param name="i"> The other Complex number to subtract </param>
         /// <returns></returns>
-        public Complex Minus(Complex i) => new Complex(Real - i.Real, Imaginary - i.Imaginary);
+        public Complex Minus(Complex i) => this - i;
 
         /// <summary>
         /// Returns the complement
@@ -63,5 +63,8 @@ namespace ComplexAlgebra
                                                    Imaginary == complex.Imaginary;
 
         public override int GetHashCode() => HashCode.Combine(Real, Imaginary);
+
+        public static Complex operator +(Complex c1, Complex c2) => new Complex(c1.Real + c2.Real, c1.Imaginary + c2.Imaginary);
+        public static Complex operator -(Complex c1, Complex c2) => new Complex(c1.Real - c2.Real, c1.Imaginary - c2.Imaginary);
     }
 }
