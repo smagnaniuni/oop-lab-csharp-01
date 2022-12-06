@@ -40,7 +40,18 @@ namespace Properties
         }
 
         // TODO generate Equals(object obj)
+        public override bool Equals(object obj)
+        {
+            return obj is Card card &&
+                   Seed == card.Seed &&
+                   Name == card.Name &&
+                   Ordinal == card.Ordinal;
+        }
 
         // TODO generate GetHashCode()
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Seed, Name, Ordinal);
+        }
     }
 }
