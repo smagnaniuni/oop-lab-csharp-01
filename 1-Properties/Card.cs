@@ -7,10 +7,6 @@ namespace Properties
     /// </summary>
     public class Card
     {
-        private string Seed { get; }
-        private string Name { get; }
-        private int Ordinal { get; }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Card"/> class.
         /// </summary>
@@ -23,6 +19,10 @@ namespace Properties
             Ordinal = ordinal;
             Seed = seed;
         }
+
+        private string Seed { get; }
+        private string Name { get; }
+        private int Ordinal { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Card"/> class.
