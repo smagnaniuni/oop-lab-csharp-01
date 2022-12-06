@@ -1,4 +1,5 @@
 using ComplexAlgebra;
+using System.Collections.Generic;
 
 namespace Calculus
 {
@@ -27,6 +28,61 @@ namespace Calculus
         public const char OperationPlus = '+';
         public const char OperationMinus = '-';
 
+        // TODO fix nullable
+        private Stack<Complex?> _values;
+        private Stack<char?> _operations;
+
+        public Calculator()
+        {
+            _values = new Stack<Complex?>();
+            _operations = new Stack<char?>();
+        }
+
         // TODO fill this class
+        public Complex Value { get; set; }
+
+        public char? Operation
+        {
+            private get => _operations.Pop();
+            set
+            {
+                _operations.Push(value);
+                _values.Push(Value);
+            }
+        }
+
+        public Complex Result { get; private set; }
+
+        // TODO fix
+        public void ComputeResult()
+        {
+            while (_values.Count > 1 && _operations.Count > 0)
+            {
+                var o1 = _values.Pop();
+                var op = Operation;
+                var o2 = Value;
+                switch (op)
+                {
+                    case OperationPlus:
+                        Result = o1 + o2;
+                        break;
+                    case OperationMinus:
+                        Result = o1 - o2;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        public void Reset()
+        {
+            _values.Clear();
+            _operations.Clear();
+            Result = new Complex();
+        }
+
+        // TODO fix
+        public override string ToString() => $"{Value}, {(_operations.Count > 0 ? _operations.Peek() : "null")}";
     }
 }
