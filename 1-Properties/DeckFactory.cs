@@ -9,42 +9,43 @@ namespace Properties
     /// </summary>
     public class DeckFactory
     {
-        private string[] Seeds { get; set; }
+        private string[] _seeds;
 
-        private string[] Names { get; set; }
+        private string[] _names;
 
-        // TODO improve
-        public IList<string> GetSeeds() => Seeds.ToList();
-
-        // TODO improve
-        public void SetSeeds(IList<string> seeds) => Seeds = seeds.ToArray();
-
-        // TODO improve
-        public IList<string> GetNames() => Names.ToList();
-
-        // TODO improve
-        public void SetNames(IList<string> names) => Names = names.ToArray();
-
-        // TODO improve
-        public int GetDeckSize() => Names.Length * Seeds.Length;
-
-        /// TODO improve
-        public ISet<Card> GetDeck()
+        public IList<string> Seeds
         {
-            if (Names == null || Seeds == null)
-            {
-                throw new InvalidOperationException();
-            }
+            get => _seeds.ToList();
+            set => _seeds = value.ToArray();
+        }
 
-            return new HashSet<Card>(Enumerable
-                .Range(0, Names.Length)
-                .SelectMany(i => Enumerable
-                    .Repeat(i, Seeds.Length)
-                    .Zip(
-                        Enumerable.Range(0, Seeds.Length),
-                        (n, s) => Tuple.Create(Names[n], Seeds[s], n)))
-                .Select(tuple => new Card(tuple))
-                .ToList());
+        public IList<string> Names
+        {
+            get => _names.ToList();
+            set => _names = value.ToArray();
+        }
+
+        public int DeckSize => _names.Length * _seeds.Length;
+
+        public ISet<Card> Deck
+        {
+            get
+            {
+                if (Names == null || Seeds == null)
+                {
+                    throw new InvalidOperationException();
+                }
+
+                return new HashSet<Card>(Enumerable
+                    .Range(0, _names.Length)
+                    .SelectMany(i => Enumerable
+                        .Repeat(i, _seeds.Length)
+                        .Zip(
+                            Enumerable.Range(0, _seeds.Length),
+                            (n, s) => Tuple.Create(Names[n], Seeds[s], n)))
+                    .Select(tuple => new Card(tuple))
+                    .ToList());
+            }
         }
     }
 }
