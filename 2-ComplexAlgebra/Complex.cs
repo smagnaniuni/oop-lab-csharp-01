@@ -25,6 +25,9 @@ namespace ComplexAlgebra
             Real = real;
             Imaginary = imaginary;
         }
+        public Complex() : this(0, 0)
+        {
+        }
 
         public double Real { get; }
         public double Imaginary { get; }
