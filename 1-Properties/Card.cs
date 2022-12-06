@@ -36,7 +36,7 @@ namespace Properties
         public override string ToString()
         {
             // TODO understand string interpolation
-            return $"{this.GetType().Name}(Name={Name}, Seed={Seed}, Ordinal={Ordinal})";
+            return $"{GetType().Name}(Name={Name}, Seed={Seed}, Ordinal={Ordinal})";
         }
 
         // TODO generate Equals(object obj)
