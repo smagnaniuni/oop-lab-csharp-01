@@ -58,16 +58,10 @@ namespace ComplexAlgebra
             return re + $"{(Imaginary > 0 ? " + " : (Imaginary < 0 ? " - " : ""))}" + im;
         }
 
-        public override bool Equals(object obj)
-        {
-            return obj is Complex complex &&
-                   Real.Equals(complex.Real) &&                     
-                   Imaginary.Equals(complex.Imaginary);
-        }
+        public override bool Equals(object obj) => obj is Complex complex &&
+                                                   Real.Equals(complex.Real) &&
+                                                   Imaginary.Equals(complex.Imaginary);
 
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Real, Imaginary);
-        }
+        public override int GetHashCode() => HashCode.Combine(Real, Imaginary);
     }
 }
