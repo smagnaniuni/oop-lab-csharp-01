@@ -41,9 +41,9 @@ namespace Properties
 
         // TODO generate Equals(object obj)
         public override bool Equals(object obj) => obj is Card card &&
-                   Seed == card.Seed &&
-                   Name == card.Name &&
-                   Ordinal == card.Ordinal;
+                                                   Seed == card.Seed &&
+                                                   Name == card.Name &&
+                                                   Ordinal == card.Ordinal;
 
         // TODO generate GetHashCode()
         public override int GetHashCode() => HashCode.Combine(Seed, Name, Ordinal);
