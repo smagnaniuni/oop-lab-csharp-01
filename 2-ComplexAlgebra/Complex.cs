@@ -20,16 +20,16 @@ namespace ComplexAlgebra
     public class Complex
     {
         // TODO: fill this class\
-        public double Real { get; }
-        public double Imaginary { get; }
-        public double Modulus => Math.Sqrt(Real * Real + Imaginary * Imaginary);
-        public double Phase => Math.Atan2(Imaginary, Real);
-
         public Complex(double real, double imaginary)
         {
             Real = real;
             Imaginary = imaginary;
         }
+
+        public double Real { get; }
+        public double Imaginary { get; }
+        public double Modulus => Math.Sqrt(Real * Real + Imaginary * Imaginary);
+        public double Phase => Math.Atan2(Imaginary, Real);
 
         /// <summary>
         /// Returns the addition
