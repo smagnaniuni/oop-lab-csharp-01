@@ -59,8 +59,8 @@ namespace ComplexAlgebra
         }
 
         public override bool Equals(object obj) => obj is Complex complex &&
-                                                   Real.Equals(complex.Real) &&
-                                                   Imaginary.Equals(complex.Imaginary);
+                                                   Real == complex.Real &&
+                                                   Imaginary == complex.Imaginary;
 
         public override int GetHashCode() => HashCode.Combine(Real, Imaginary);
     }
