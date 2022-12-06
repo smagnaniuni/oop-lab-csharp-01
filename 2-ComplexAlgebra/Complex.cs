@@ -1,3 +1,5 @@
+using System;
+
 namespace ComplexAlgebra
 {
     /// <summary>
@@ -18,5 +20,54 @@ namespace ComplexAlgebra
     public class Complex
     {
         // TODO: fill this class\
+        public double Real { get; }
+        public double Imaginary { get; }
+        public double Modulus => Math.Sqrt(Real * Real + Imaginary * Imaginary);
+        public double Phase => Math.Atan2(Imaginary, Real);
+
+        public Complex(double real, double imaginary)
+        {
+            Real = real;
+            Imaginary = imaginary;
+        }
+
+        /// <summary>
+        /// Returns the addition
+        /// </summary>
+        /// <param name="i"> The other Complex number to sum </param>
+        /// <returns></returns>
+        public Complex Plus(Complex i) => new Complex(Real + i.Real, Imaginary + i.Imaginary);
+
+        /// <summary>
+        /// Returns the subtraction
+        /// </summary>
+        /// <param name="i"> The other Complex number to subtract </param>
+        /// <returns></returns>
+        public Complex Minus(Complex i) => new Complex(Real - i.Real, Imaginary - i.Imaginary);
+
+        /// <summary>
+        /// Returns the complement
+        /// </summary>
+        /// <returns></returns>
+        public Complex Complement() => new Complex(Real, -Imaginary);
+
+        public override string ToString()
+        {
+            var re = $"{Real}";
+            var im = $"{(Imaginary != 0 ? ((Math.Abs(Imaginary) != 1 ? Math.Abs(Imaginary) : "") + "i") : "")}";
+            return re + $"{(Imaginary > 0 ? " + " : (Imaginary < 0 ? " - " : ""))}" + im;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Complex complex &&
+                   Real.Equals(complex.Real) &&                     
+                   Imaginary.Equals(complex.Imaginary);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Real, Imaginary);
+        }
     }
 }
