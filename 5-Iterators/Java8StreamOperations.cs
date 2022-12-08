@@ -81,7 +81,7 @@ namespace Iterators
         /// <returns>the new sequence.</returns>
         public static IEnumerable<Tuple<int, TAny>> Indexed<TAny>(this IEnumerable<TAny> sequence)
         {
-            var idx = 0;
+            int idx = 0;
             foreach (var item in sequence)
             {
                 yield return new Tuple<int, TAny>(idx, item);
@@ -130,7 +130,7 @@ namespace Iterators
         /// <returns>the new sequence.</returns>
         public static IEnumerable<TAny> SkipSome<TAny>(this IEnumerable<TAny> sequence, long count)
         {
-            var idx = 0;
+            long idx = 0;
             return sequence.SkipWhile(_ => idx++ < count);
         }
 
@@ -159,7 +159,7 @@ namespace Iterators
         /// <returns>the new sequence.</returns>
         public static IEnumerable<TAny> TakeSome<TAny>(this IEnumerable<TAny> sequence, long count)
         {
-            var idx = 0;
+            long idx = 0;
             return sequence.TakeWhile(_ => idx++ < count);
         }
 
