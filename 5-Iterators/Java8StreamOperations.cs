@@ -64,7 +64,13 @@ namespace Iterators
         /// <returns>the new sequence.</returns>
         public static IEnumerable<TAny> Filter<TAny>(this IEnumerable<TAny> sequence, Predicate<TAny> predicate)
         {
-            throw new NotImplementedException();
+            foreach (var item in sequence)
+            {
+                if (predicate.Invoke(item))
+                {
+                    yield return item;
+                }
+            }
         }
 
         /// <summary>
