@@ -130,7 +130,8 @@ namespace Iterators
         /// <returns>the new sequence.</returns>
         public static IEnumerable<TAny> SkipSome<TAny>(this IEnumerable<TAny> sequence, long count)
         {
-            throw new NotImplementedException();
+            var idx = 0;
+            return sequence.SkipWhile(_ => idx++ < count);
         }
 
         /// <summary>
