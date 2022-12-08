@@ -51,7 +51,7 @@ namespace Arrays
         /// <seealso cref="Examples.BubbleSort"/>
         public static Complex[] SortByPhase(Complex[] array)
         {
-            return Clone(array)
+            return array
                 .OrderBy(c => c.Phase)
                 .ToArray();
         }
