@@ -1,4 +1,5 @@
 using ComplexAlgebra;
+using System;
 using System.Collections.Generic;
 
 namespace Calculus
@@ -28,9 +29,9 @@ namespace Calculus
         public const char OperationPlus = '+';
         public const char OperationMinus = '-';
 
-        // TODO fix nullable
         private Stack<Complex?> _values;
         private Stack<char?> _operations;
+        private Complex? _result = null;
 
         public Calculator()
         {
@@ -38,36 +39,40 @@ namespace Calculus
             _operations = new Stack<char?>();
         }
 
-        // TODO fill this class
-        public Complex Value { get; set; }
+        public Complex? Value
+        {
+            get => _result;
+            set
+            {
+                _result = value;
+                Console.WriteLine(value);
+            }
+        }
 
         public char? Operation
         {
-            private get => _operations.Pop();
             set
             {
                 _operations.Push(value);
                 _values.Push(Value);
+                _result = null;
             }
         }
 
-        public Complex Result { get; private set; }
-
-        // TODO fix
         public void ComputeResult()
         {
-            while (_values.Count > 1 && _operations.Count > 0)
+            while (_values.Count > 0 && _operations.Count > 0)
             {
+                var op = _operations.Pop();
                 var o1 = _values.Pop();
-                var op = Operation;
-                var o2 = Value;
+                var o2 = Value ?? new Complex();
                 switch (op)
                 {
                     case OperationPlus:
-                        Result = o1 + o2;
+                        _result = o1 + o2;
                         break;
                     case OperationMinus:
-                        Result = o1 - o2;
+                        _result = o1 - o2;
                         break;
                     default:
                         break;
@@ -79,10 +84,9 @@ namespace Calculus
         {
             _values.Clear();
             _operations.Clear();
-            Result = new Complex();
+            _result = null;
         }
 
-        // TODO fix
-        public override string ToString() => $"{Value}, {(_operations.Count > 0 ? _operations.Peek() : "null")}";
+        public override string ToString() => $"{(_result?.ToString() ?? "null")}, {(_operations.Count > 0 ? _operations.Peek() : "null")}";
     }
 }
