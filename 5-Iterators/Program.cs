@@ -24,7 +24,6 @@ namespace Iterators
             }
 
             IDictionary<int, int> occurrences = numbers
-                .OrderBy(n => n)
                 .Map(optN => {
                     Console.Write(optN.ToString() + ",");
                     return optN;
