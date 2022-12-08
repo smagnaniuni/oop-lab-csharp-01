@@ -159,7 +159,8 @@ namespace Iterators
         /// <returns>the new sequence.</returns>
         public static IEnumerable<TAny> TakeSome<TAny>(this IEnumerable<TAny> sequence, long count)
         {
-            throw new NotImplementedException();
+            var idx = 0;
+            return sequence.TakeWhile(_ => idx++ < count);
         }
 
         /// <summary>
