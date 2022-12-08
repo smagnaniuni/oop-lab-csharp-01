@@ -16,7 +16,10 @@ namespace Iterators
         /// <typeparam name="TAny">the type of the items in the sequence.</typeparam>
         public static void ForEach<TAny>(this IEnumerable<TAny> sequence, Action<TAny> consumer)
         {
-            throw new NotImplementedException();
+            foreach (var item in sequence)
+            {
+                consumer.Invoke(item);
+            }
         }
 
         /// <summary>
