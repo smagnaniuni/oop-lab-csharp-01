@@ -82,8 +82,7 @@ namespace Indexers
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.ToString"/>
         public override string ToString()
         {
-            // TODO: improve
-            return base.ToString();
+            return "[ " + string.Join(", ", GetElements()) + " ]";
         }
     }
 }
