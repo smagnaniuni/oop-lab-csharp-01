@@ -104,7 +104,7 @@ namespace Iterators
         /// <returns>the new sequence.</returns>
         public static TOther Reduce<TAny, TOther>(this IEnumerable<TAny> sequence, TOther seed, Func<TOther, TAny, TOther> reducer)
         {
-            sequence.ForEach(e => reducer.Invoke(seed, e));
+            sequence.ForEach(e => seed = reducer.Invoke(seed, e));
             return seed;
         }
 
