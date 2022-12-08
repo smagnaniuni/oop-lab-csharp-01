@@ -64,22 +64,19 @@ namespace Indexers
         /// <inheritdoc cref="IEquatable{T}.Equals(T)" />
         public bool Equals(IMap2D<TKey1, TKey2, TValue> other)
         {
-            // TODO: improve
-            return base.Equals(other);
+            return GetHashCode().Equals(other.GetHashCode());
         }
 
         /// <inheritdoc cref="object.Equals(object?)" />
         public override bool Equals(object obj)
         {
-            // TODO: improve
-            return base.Equals(obj);
+            return obj is IMap2D<TKey1, TKey2, TValue> other && Equals(other);
         }
 
         /// <inheritdoc cref="object.GetHashCode"/>
         public override int GetHashCode()
         {
-            // TODO: improve
-            return base.GetHashCode();
+            return _values.GetHashCode();
         }
 
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.ToString"/>
