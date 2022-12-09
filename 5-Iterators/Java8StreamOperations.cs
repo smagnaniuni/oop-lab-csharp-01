@@ -153,7 +153,13 @@ namespace Iterators
         /// <returns>the new sequence.</returns>
         public static IEnumerable<TAny> TakeWhile<TAny>(this IEnumerable<TAny> sequence, Predicate<TAny> predicate)
         {
-            return sequence.Filter(predicate);
+            foreach (var item in sequence)
+            {
+                if (predicate.Invoke(item))
+                    yield return item;
+                else
+                    yield break;
+            }
         }
 
         /// <summary>
