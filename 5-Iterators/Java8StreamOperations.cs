@@ -177,7 +177,8 @@ namespace Iterators
         /// <returns>an infinite sequence of integers.</returns>
         public static IEnumerable<int> Integers(int start)
         {
-            yield return start++;
+            while (true)
+                yield return start++;
         }
 
         /// <summary>
