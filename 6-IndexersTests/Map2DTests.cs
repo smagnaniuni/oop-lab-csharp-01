@@ -1,5 +1,6 @@
 namespace Indexers
 {
+    using System;
     using System.Linq;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -45,6 +46,29 @@ namespace Indexers
             {
                 Assert.Fail("Wrong implementation");
             }
+        }
+
+        [TestMethod]
+        public void EqualsTest()
+        {
+            IMap2D<int, int, int> nullTable = null;
+            IMap2D<int, int, int> emptyTable = new Map2D<int, int, int>();
+            IMap2D<int, int, int> equalTable = new Map2D<int, int, int>();
+            equalTable.Fill(
+                Enumerable.Range(1, 10),
+                Enumerable.Range(1, 10),
+                (i, j) => i * j);
+            Console.WriteLine($"{this.pitagoricTable}");
+            Console.WriteLine($"{equalTable}");
+            Console.WriteLine($"{this.pitagoricTable.GetHashCode()}");
+            // Console.WriteLine($"{nullTable.GetHashCode()}");
+            Console.WriteLine($"{emptyTable.GetHashCode()}");
+            Console.WriteLine($"{equalTable.GetHashCode()}");
+            Assert.IsFalse(this.pitagoricTable.Equals(null));
+            Assert.IsFalse(this.pitagoricTable.Equals(nullTable));
+            Assert.IsFalse(this.pitagoricTable.Equals(emptyTable));
+            Assert.IsTrue(this.pitagoricTable.Equals(equalTable));
+            Assert.IsTrue(this.pitagoricTable.Equals(this.pitagoricTable));
         }
     }
 }
