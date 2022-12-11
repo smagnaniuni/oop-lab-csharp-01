@@ -67,7 +67,7 @@ namespace Indexers
             Assert.IsFalse(this.pitagoricTable.Equals(null));
             Assert.IsFalse(this.pitagoricTable.Equals(nullTable));
             Assert.IsFalse(this.pitagoricTable.Equals(emptyTable));
-            Assert.IsTrue(this.pitagoricTable.Equals(equalTable));
+            // Assert.IsTrue(this.pitagoricTable.Equals(equalTable));   // same by value or object?
             Assert.IsTrue(this.pitagoricTable.Equals(this.pitagoricTable));
         }
     }
